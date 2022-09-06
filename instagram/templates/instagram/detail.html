@@ -1,0 +1,77 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="{% url 'feed' %}">
+        <img class="logo" src="https://raw.githubusercontent.com/comeduschool/instaclone/main/web/public/logo2.png" alt="logo.png">
+        </a>
+      </div>
+      <div class="nav-center"></div>
+      <div class="nav-right">
+        <span class="nav-item">
+          <img class="nav-item-icon" src="https://raw.githubusercontent.com/comeduschool/instagram/django/reactjs/web/public/assets/icons/home-outlined.svg" alt="home.svg" />
+        </span>
+        <span class="nav-item">
+          <img  class="nav-item-icon" src="https://raw.githubusercontent.com/comeduschool/instagram/django/reactjs/web/public/assets/icons/add-outlined.svg" />
+        </span>
+        <span class="nav-item">
+          <img class="nav-item-profile" src="https://raw.githubusercontent.com/comeduschool/instagram/django/reactjs/web/public/assets/test-profile.jpeg" alt="profile" />
+          <div class="nav-menu">
+            <div class="nav-menu-contaner-show">
+              <div class="nav-menu-contaner-tail"></div>
+              <div class="nav-menu-item-list">
+                <a class="icon-label-container nav-menu-logout" href="{% url 'login' %}">
+                  <span class="icon-label">Login</span></a>
+                <br>
+                <a class="icon-label-container nav-menu-logout" href="{% url 'register' %}">
+                  <span class="icon-label">Register</span></a>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </nav>
+    <div>
+  <header>
+    <div class="center">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="{{ profile.avatar.url }}" alt="profile">
+        </div>
+        <div class="profile-user-settings">
+          <h1 class="profile-user-name">{{ profile.name }}</h1>
+          <button class="btn profile-edit-btn">Edit profile</button>
+          <button class="btn profile-settings-btn" aria-label="profile settings">
+            <img src="https://raw.githubusercontent.com/comeduschool/instagram/django/reactjs/web/public/assets/icons/setting.svg" alt="" />
+          </button>
+        </div>
+        <div class="profile-stats">
+          <ul>
+            <li><span class="profile-stat-count">{{ profile.post_set.all.count }}</span> posts</li>
+            <li><span class="profile-stat-count">{{ profile.followers }}</span> followers</li>
+            <li><span class="profile-stat-count">{{ profile.followed }}</span> following</li>
+          </ul>
+        </div>
+        <div class="profile-bio">
+          <p><span class="profile-real-name">{{ profile.name }}</span>{{ profile.description }}</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div></div>
+</div>
+</body>
+</html>
