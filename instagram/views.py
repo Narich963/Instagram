@@ -4,7 +4,16 @@ from .forms import UserRegisterForm, Authentication
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import login, logout ,authenticate
+from rest_framework import viewsets
+from .serializers import *
 
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class ProfileViewset(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 def feed(request):
     post = Post.objects.all()
